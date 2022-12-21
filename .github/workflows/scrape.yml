@@ -31,7 +31,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install requirements.txt
+        pip install -r requirements.txt
         shot-scraper install
 
     - name: Scrape
