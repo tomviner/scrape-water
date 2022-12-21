@@ -65,7 +65,7 @@ jobs:
     - name: Create animation
       run: |-
         export FONT="$(convert -list font | grep -i mono | grep Font | head -1 | cut -d' ' -f 4)"
-        echo "${FONT}""
+        echo "${FONT}"
         convert -resize 1050x700 -delay 20 -loop 0 -font "${FONT}" -undercolor white -pointsize 18 -annotate +20+30 %t images/tn2/*.png tn2-animated.gif
         mogrify -layers 'optimize' tn2-animated.gif
 
