@@ -55,7 +55,7 @@ jobs:
 
     - name: Scrape
       run: |
-        export FILEPATH="images/tn2/southeastwater-tn2-$(date +%s)---$(date +%Y-%m-%d_%H-%M).png"
+        export FILEPATH="images/tn2/southeastwater-tn2-$(date +%s)---$(date +%Y-%m-%d_%a_%H-%M).png"
         shot-scraper 'https://inyourarea.digdat.co.uk/southeastwater?pc=tn2' --wait 5000 -a auth.json --width 1375 --height 1100 -s '#map-container' -o "$FILEPATH"
         echo "FILEPATH=${FILEPATH}" >> $GITHUB_ENV
 
