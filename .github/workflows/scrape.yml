@@ -17,6 +17,18 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Install imagemagick
+      run: |
+        mkdir -p "$HOME/.local/bin"
+        curl -O 'https://download.imagemagick.org/ImageMagick/download/binaries/magick'
+        chmod u+x magick
+        mv magick "$HOME/.local/bin"
+        ls "$HOME/.local"
+        echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+    - name: Check imagemagick
+      run: magick -version
+
     - name: Cache Oxipng
       uses: actions/cache@v3
       with:
