@@ -23,7 +23,7 @@ jobs:
         version: 1.0
 
     - name: Check imagemagick
-      run: magick -version
+      run: convert -version
 
     - name: Cache Oxipng
       uses: actions/cache@v3
