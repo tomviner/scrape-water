@@ -23,7 +23,9 @@ jobs:
         version: 1.0
 
     - name: Check imagemagick
-      run: convert -version
+      run: |
+        convert -version
+        convert -list font | grep Font
 
     - name: Cache Oxipng
       uses: actions/cache@v3
