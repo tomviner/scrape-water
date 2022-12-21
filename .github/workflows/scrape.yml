@@ -6,6 +6,9 @@ on:
   schedule:
   - cron:  '59 * * * *'
 
+permissions:
+  contents: write
+
 jobs:
   shot-scraper:
     runs-on: ubuntu-latest
@@ -20,8 +23,15 @@ jobs:
         python-version: "3.10"
         cache: "pip"
 
-    - run: |
-        pip install -r requirements.txt
+    - name: Cache Playwright browsers
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/ms-playwright/
+        key: ${{ runner.os }}-playwright
+
+    - name: Install dependencies
+      run: |
+        pip install requirements.txt
         shot-scraper install
 
     - name: Scrape
