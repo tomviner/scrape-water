@@ -65,7 +65,8 @@ jobs:
 
     - name: Create animation
       run: |-
-        convert -delay 20 -loop 0 -font Liberation-Mono -pointsize 18 -annotate +20+30 %t images/tn2/*.png tn2-animated.gif
+        export FONT="$(convert -list font | grep -i mono | grep Font | head -1 | cut -d' ' -f 4)"
+        convert -delay 20 -loop 0 -font "${FONT}" -pointsize 18 -annotate +20+30 %t images/tn2/*.png tn2-animated.gif
 
     - name: Commit and push
       run: |-
