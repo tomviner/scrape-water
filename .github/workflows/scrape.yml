@@ -45,13 +45,13 @@ jobs:
 
     - name: Scrape
       run: |
-        echo "FILEPATH=images/tn2/southeastwater-tn2-$(date +%s).png" >> $GITHUB_ENV
-
-        shot-scraper https://inyourarea.digdat.co.uk/southeastwater\?pc\=tn2 --wait 5000 -a auth.json --width 1375 --height 1100 -s '#map-container' -o "${{ env.FILEPATH }}"
+        export FILEPATH="images/tn2/southeastwater-tn2-$(date +%s).png"
+        shot-scraper https://inyourarea.digdat.co.uk/southeastwater\?pc\=tn2 --wait 5000 -a auth.json --width 1375 --height 1100 -s '#map-container' -o "$FILEPATH"
+        echo "FILEPATH=${FILEPATH}" >> $GITHUB_ENV
 
     - name: Optimize PNGs
       run: |-
-        oxipng -o 4 -i 0 --strip safe "${{ env.FILEPATH }}"
+        oxipng -o 4 -i 0 --strip safe "$FILEPATH"
 
     - name: Commit and push
       run: |-
