@@ -26,7 +26,7 @@ jobs:
 
     - name: Scrape
       run: |
-        shot-scraper https://inyourarea.digdat.co.uk/southeastwater\?pc\=tn2 --wait 5000 -a auth.json --width 4800 --height 3200 -s '#map-container' -o "images/southeastwater-tn2-$(date +%s).png"
+        shot-scraper https://inyourarea.digdat.co.uk/southeastwater\?pc\=tn2 --wait 5000 -a auth.json --width 1375 --height 1100 -s '#map-container' -o "images/tn2/southeastwater-tn2-$(date +%s).png"
 
     - name: Commit and push
       run: |-
