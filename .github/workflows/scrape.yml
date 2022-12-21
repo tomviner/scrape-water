@@ -1,0 +1,39 @@
+name: Scrape status of water outages
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+  - cron:  '59 * * * *'
+
+jobs:
+  shot-scraper:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+        cache: "pip"
+
+    - run: |
+        pip install -r requirements.txt
+        shot-scraper install
+
+    - name: Scrape
+      run: |
+        shot-scraper https://inyourarea.digdat.co.uk/southeastwater\?pc\=tn2 --wait 5000 -a auth.json --width 4800 --height 3200 -s '#map-container' -o "images/southeastwater-tn2-$(date +%s).png"
+
+    - name: Commit and push
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        timestamp=$(date -u)
+        git commit -m "${timestamp}" || exit 0
+        git pull --rebase
+        git push
