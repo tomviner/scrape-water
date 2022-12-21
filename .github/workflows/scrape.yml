@@ -47,11 +47,11 @@ jobs:
       run: |
         echo "FILEPATH=images/tn2/southeastwater-tn2-$(date +%s).png" >> $GITHUB_ENV
 
-        shot-scraper https://inyourarea.digdat.co.uk/southeastwater\?pc\=tn2 --wait 5000 -a auth.json --width 1375 --height 1100 -s '#map-container' -o "$FILEPATH"
+        shot-scraper https://inyourarea.digdat.co.uk/southeastwater\?pc\=tn2 --wait 5000 -a auth.json --width 1375 --height 1100 -s '#map-container' -o "${{ env.FILEPATH }}"
 
     - name: Optimize PNGs
       run: |-
-        oxipng -o 4 -i 0 --strip safe "$FILEPATH"
+        oxipng -o 4 -i 0 --strip safe "${{ env.FILEPATH }}"
 
     - name: Commit and push
       run: |-
