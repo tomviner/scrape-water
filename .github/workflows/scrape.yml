@@ -65,7 +65,7 @@ jobs:
 
     - name: Create animation
       run: |-
-        convert -delay 20 -loop 0 -pointsize 18 -annotate +20+30 %t images/tn2/*.png tn2-animated.gif
+        convert -delay 20 -loop 0 -font Liberation-Mono -pointsize 18 -annotate +20+30 %t images/tn2/*.png tn2-animated.gif
 
     - name: Commit and push
       run: |-
