@@ -66,6 +66,10 @@ jobs:
       run: |-
         oxipng -o 4 -i 0 --strip safe "$FILEPATH"
 
+    - name: Create animation
+      run: |-
+        magick -delay 20 -loop 0 images/tn2/*.png tn2-animated.gif
+
     - name: Commit and push
       run: |-
         git config user.name "Automated"
