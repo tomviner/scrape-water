@@ -68,7 +68,7 @@ jobs:
         echo "${FONT}"
         convert -resize 1050x700 -delay 20 -loop 0 -font "${FONT}" -undercolor white -pointsize 18 -annotate +20+30 %t images/tn2/*.png tn2-animated.gif
         cp tn2-animated.gif tn2-animated-minified.gif
-        mogrify -layers 'optimize' -fuzz '99.9%' tn2-animated-minified.gif
+        mogrify -layers 'optimize' tn2-animated-minified.gif
         ls -lh tn2-animated*.gif
 
     - name: Commit and push
