@@ -66,7 +66,11 @@ jobs:
       run: |-
         export FONT="$(convert -list font | grep -i mono | grep Font | head -1 | cut -d' ' -f 4)"
         echo "${FONT}"
-        convert -resize 1050x700 -delay 20 -loop 0 -font "${FONT}" -undercolor white -pointsize 18 -annotate +20+30 %t images/tn2/*.png tn2-animated.gif
+        convert \
+          -resize 1050x700 \
+          -delay 30 -loop 0 +duplicate +duplicate +duplicate +duplicate +duplicate \
+          -font "${FONT}" -undercolor white -pointsize 18 -annotate +30+30 "%t - %[fx:t+1]/%n" \
+          images/tn2/*.png tn2-animated.gif
         cp tn2-animated.gif tn2-animated-minified.gif
         mogrify -layers 'optimize' tn2-animated-minified.gif
         ls -lh tn2-animated*.gif
