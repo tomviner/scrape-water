@@ -73,7 +73,8 @@ jobs:
           images/tn2/*.png tn2-animated.gif
         cp tn2-animated.gif tn2-animated-minified.gif
         mogrify -layers 'optimize' tn2-animated-minified.gif
-        ls -lh tn2-animated*.gif
+        convert tn2-animated.gif tn2-animated.mov
+        ls -lh tn2-animated*
 
     - name: Commit and push
       run: |-
