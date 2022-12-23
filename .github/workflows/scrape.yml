@@ -77,7 +77,7 @@ jobs:
           -resize 1050x700 \
           -delay 30 -loop 0 +duplicate +duplicate +duplicate +duplicate +duplicate \
           -font "${FONT}" -undercolor white -pointsize 18 -annotate +30+30 "%t - %[fx:t+1]/%n" \
-          images/tn2/*.png tn2-animated.mov
+          images/tn2/*.png tn2-animated.mp4
         ls -lh tn2-animated*
 
     - name: Commit and push
