@@ -4,4 +4,5 @@ A [git scraper](https://simonwillison.net/2020/Oct/9/git-scraping/) that records
 
 Live map at https://inyourarea.digdat.co.uk/southeastwater?pc=tn2
 
-![image](https://github.com/tomviner/scrape-water/blob/main/tn2-animated-minified.gif?raw=true)
+Scraper now paused. Recording from December 2022:
+https://user-images.githubusercontent.com/167319/209737608-37015555-f459-4743-bbf4-0275f2e8fba4.mp4
